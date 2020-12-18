@@ -7,7 +7,7 @@ using System.Text;
 namespace LibreriaConexion.IRepository
 {
 
-    interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> where TEntity : class
     {
         void Delete(TEntity entityToDelete);
         void Delete(object id);

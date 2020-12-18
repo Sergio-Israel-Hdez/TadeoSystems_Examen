@@ -1,4 +1,5 @@
-﻿using LibreriaConexion.IRepository;
+﻿using Entidades;
+using LibreriaConexion.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,11 @@ using System.Text;
 
 namespace LibreriaConexion.Repository
 {
-    class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        internal Entidades.TadeoSystemsBDContext context;
+        internal TadeoSystemsBDContext context;
         internal DbSet<TEntity> dbSet;
-        public BaseRepository(Entidades.TadeoSystemsBDContext context)
+        public BaseRepository(TadeoSystemsBDContext context)
         {
             this.context = context;
             this.dbSet = context.Set<TEntity>();

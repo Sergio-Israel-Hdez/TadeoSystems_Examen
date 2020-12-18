@@ -1,3 +1,4 @@
+using LibreriaConexion.IRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,7 +27,9 @@ namespace TadeoSystems_Examen
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
-            services.AddControllers();
+
+            services.AddControllers().AddControllersAsServices();
+            services.AddSingleton<Entidades.TadeoSystemsBDContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
