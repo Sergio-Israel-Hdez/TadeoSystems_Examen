@@ -33,7 +33,7 @@ namespace TadeoSystems_Examen.Controllers
         ///api/emplado/getbyid?id=1
         public IActionResult GetById(int id)
         {
-            var result = _empleado.Get(filter: x => x.IdArea == id, orderBy: null,includeProperties: "EmpleadoHabilidad");
+            var result = _empleado.Get(filter: x => x.IdEmpleado == id, orderBy: null,includeProperties: "EmpleadoHabilidad");
             return Ok(result);
         }
         [HttpPost]
