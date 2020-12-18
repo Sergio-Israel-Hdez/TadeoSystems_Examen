@@ -55,7 +55,10 @@ namespace TadeoSystems_Examen.Controllers
             {
                 return NotFound();
             }
-            _area.Update(area);
+            Area oldArea = _area.GetById(area.IdArea);
+            oldArea.Nombre = area.Nombre;
+            oldArea.Descripcion = area.Descripcion;
+            _area.Update(oldArea);
             _area.Save();
             return Ok(area);
         }

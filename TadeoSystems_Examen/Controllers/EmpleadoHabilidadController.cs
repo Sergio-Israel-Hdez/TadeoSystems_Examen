@@ -55,7 +55,10 @@ namespace TadeoSystems_Examen.Controllers
             {
                 return NotFound();
             }
-            _habilidad.Update(habilidad);
+            EmpleadoHabilidad oldHabilidad = _habilidad.GetById(habilidad.IdHabilidad);
+            oldHabilidad.NombreHabilidad = habilidad.NombreHabilidad;
+            oldHabilidad.IdEmpleado = habilidad.IdEmpleado;
+            _habilidad.Update(oldHabilidad);
             _habilidad.Save();
             return Ok(habilidad);
         }

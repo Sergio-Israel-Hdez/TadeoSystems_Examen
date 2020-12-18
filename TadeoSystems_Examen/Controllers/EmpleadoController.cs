@@ -12,12 +12,12 @@ namespace TadeoSystems_Examen.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmpladoController : ControllerBase
+    public class EmpleadoController : ControllerBase
     {
         public IRepository<Empleado> _empleado = null;
         private TadeoSystemsBDContext _context = null;
 
-        public EmpladoController(TadeoSystemsBDContext context)
+        public EmpleadoController(TadeoSystemsBDContext context)
         {
             this._context = context;
             _empleado = new BaseRepository<Empleado>(_context);
@@ -55,7 +55,15 @@ namespace TadeoSystems_Examen.Controllers
             {
                 return NotFound();
             }
-            _empleado.Update(empleado);
+            Empleado oldEmpleado = _empleado.GetById(empleado.IdEmpleado);
+            oldEmpleado.NombreCompleto = empleado.NombreCompleto;
+            oldEmpleado.Cedula = empleado.Cedula;
+            oldEmpleado.Correo = empleado.Correo;
+            oldEmpleado.FechaNacimiento = empleado.FechaNacimiento;
+            oldEmpleado.IdArea = empleado.IdArea;
+            oldEmpleado.Foto = empleado.Foto;
+            oldEmpleado.FechaIngreso = oldEmpleado.FechaIngreso;
+            _empleado.Update(oldEmpleado);
             _empleado.Save();
             return Ok(empleado);
         }
