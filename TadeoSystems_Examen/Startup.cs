@@ -28,8 +28,11 @@ namespace TadeoSystems_Examen
         {
             services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 
-            services.AddControllers().AddControllersAsServices();
+            services.AddControllers().AddControllersAsServices().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             services.AddSingleton<Entidades.TadeoSystemsBDContext>();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

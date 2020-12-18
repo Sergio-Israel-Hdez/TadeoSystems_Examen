@@ -25,7 +25,7 @@ namespace TadeoSystems_Examen.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _empleado.Get(filter: null, orderBy: null,includeProperties: "EmpleadoHabilidad");
+            var result = _empleado.Get(filter: null, orderBy: null);
             return Ok(result);
         }
         [HttpGet]
@@ -33,7 +33,7 @@ namespace TadeoSystems_Examen.Controllers
         ///api/emplado/getbyid?id=1
         public IActionResult GetById(int id)
         {
-            var result = _empleado.Get(filter: x => x.IdEmpleado == id, orderBy: null,includeProperties: "EmpleadoHabilidad");
+            var result = _empleado.Get(filter: x => x.IdEmpleado == id, orderBy: null);
             return Ok(result);
         }
         [HttpPost]
@@ -45,7 +45,7 @@ namespace TadeoSystems_Examen.Controllers
             }
             _empleado.Insert(empleado);
             _empleado.Save();
-            var LastInsert = _empleado.Get(filter: null, orderBy: x => x.OrderByDescending(x => x.IdEmpleado), includeProperties: "EmpleadoHabilidad").Take(1).First();
+            var LastInsert = _empleado.Get(filter: null, orderBy: x => x.OrderByDescending(x => x.IdEmpleado)).Take(1).First();
             return Ok(LastInsert);
         }
         [HttpPut]
