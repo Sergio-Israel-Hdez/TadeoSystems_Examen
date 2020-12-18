@@ -12,12 +12,12 @@ namespace TadeoSystems_Examen.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmpladoHabilidadController : ControllerBase
+    public class EmpleadoHabilidadController : ControllerBase
     {
         public IRepository<EmpleadoHabilidad> _habilidad = null;
         private TadeoSystemsBDContext _context = null;
 
-        public EmpladoHabilidadController(TadeoSystemsBDContext context)
+        public EmpleadoHabilidadController(TadeoSystemsBDContext context)
         {
             this._context = context;
             _habilidad = new BaseRepository<EmpleadoHabilidad>(_context);
